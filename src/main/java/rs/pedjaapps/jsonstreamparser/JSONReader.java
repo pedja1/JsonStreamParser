@@ -13,6 +13,7 @@ import java.io.InputStream;
 public class JSONReader
 {
     private final JSONHandler jsonHandler;
+    private final JsonFactory jFactory;
 
     public JSONReader(JSONHandler jsonHandler)
     {
@@ -21,12 +22,11 @@ public class JSONReader
         {
             throw new IllegalArgumentException("JSONHandler cannot be null");
         }
+        jFactory = new JsonFactory();
     }
 
     public void parse(InputStream stream) throws JSONException
     {
-        JsonFactory jFactory = new JsonFactory();
-
         try
         {
             JsonParser jParser = jFactory.createParser(stream);
